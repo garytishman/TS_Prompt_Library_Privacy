@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — Tishman Prompt Library</title>
+<style>
+  :root {
+    --text: #1a1a2e;
+    --text-secondary: #475569;
+    --border: #e2e8f0;
+    --bg: #ffffff;
+    --accent: #0f6cbd;
+    --surface: #f8fafc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin: 0 0 6px;
+    letter-spacing: -0.3px;
+  }
+  .subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0 0 40px;
+  }
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 40px 0 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin: 20px 0 8px;
+  }
+  p { margin: 0 0 14px; color: var(--text); }
+  ul { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  strong { font-weight: 700; }
+  .box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 0 0 14px;
+  }
+  .not-collected {
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+  code {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 0.88em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">Tishman Prompt Library — Chrome Extension &nbsp;•&nbsp; Effective Date: July 13, 2026</p>
+
+  <p>
+    Tishman Prompt Library is an internal browser extension built by
+    Tishman Speyer for use by Tishman Speyer employees and contractors. It lets signed-in
+    users browse, copy, and insert prompts from the organization's internal SharePoint
+    prompt library into supported AI assistant websites. This policy explains exactly what
+    information the Extension accesses, how it is used, where it is stored, and who it is
+    shared with.
+  </p>
+
+  <h2>Summary</h2>
+  <div class="box">
+    <p style="margin-bottom:0;">
+      The Extension does not operate any backend server and does not sell, rent, or share
+      any data with third parties for advertising or analytics purposes. All data the
+      Extension touches either stays on your device or is exchanged directly, over HTTPS,
+      with your organization's own Microsoft 365 tenant (Microsoft Entra ID / Microsoft
+      Graph / SharePoint Online) — the same Microsoft services your organization already
+      uses for sign-in and file storage.
+    </p>
+  </div>
+
+  <h2>Information We Collect</h2>
+
+  <h3>Authentication information</h3>
+  <p>
+    When you click "Sign in with Microsoft," the Extension obtains a short-lived OAuth
+    access token from your organization's Microsoft Entra ID, using Chrome's built-in
+    <code>chrome.identity</code> sign-in flow. This token is used only to call Microsoft
+    Graph on your behalf (to read your department and the prompt library). It is stored
+    solely in <code>chrome.storage.session</code>, which is automatically cleared when you
+    close your browser or sign out, and it is never transmitted anywhere other than
+    Microsoft's own sign-in and Graph API endpoints.
+  </p>
+
+  <h3>Personally identifiable information</h3>
+  <p>
+    The Extension reads your Microsoft Entra ID <strong>department</strong> attribute
+    (via Microsoft Graph's <code>/me</code> endpoint) solely to determine which
+    department-specific prompt list to display alongside the shared "Common" list. This
+    value is cached only in <code>chrome.storage.session</code> for the duration of your
+    browser session and is never transmitted to any server other than Microsoft Graph.
+    The Extension does not collect your name, email address, phone number, or any other
+    personal identifiers beyond this single attribute.
+  </p>
+
+  <h3>Organizational content</h3>
+  <p>
+    The Extension fetches prompt entries (title, description, tags, author, and last
+    modified date) from your organization's SharePoint prompt library via Microsoft
+    Graph, so they can be displayed and searched inside the Extension. This content
+    belongs to your organization, not to any individual user, and is cached locally in
+    <code>chrome.storage.session</code> to avoid repeated network requests within the same
+    browser session.
+  </p>
+
+  <h3>Local preferences</h3>
+  <p>
+    The Extension stores one small preference — your light/dark theme choice — in
+    <code>chrome.storage.local</code> so it persists across browser restarts. This is a UI
+    setting only and is never transmitted anywhere.
+  </p>
+
+  <h3>Website interaction (AI assistant tabs)</h3>
+  <p>
+    When you click "Use" on a prompt, the Extension checks the hostname of your
+    currently active browser tab (only at that moment, via the <code>activeTab</code>
+    permission) to confirm you're on a supported AI assistant site
+    (ChatGPT, Claude, Microsoft Copilot, or Bing). If so, it inserts the selected prompt's
+    text into that page's input box on your behalf. This is a one-way action: the
+    Extension <strong>writes</strong> prompt text into the page; it does not read, collect,
+    or transmit any content, conversation, or data from those AI assistant sites.
+  </p>
+
+  <h3>What we do not collect</h3>
+  <ul>
+    <li><span class="not-collected">Location data:</span> not collected.</li>
+    <li><span class="not-collected">Browsing history:</span> not collected, logged, or transmitted. The Extension only checks the active tab's hostname at the moment you click "Use," and never stores or reports it.</li>
+    <li><span class="not-collected">Financial or payment information:</span> not collected.</li>
+    <li><span class="not-collected">Health information:</span> not collected.</li>
+    <li><span class="not-collected">Analytics, tracking, or advertising data:</span> not collected. The Extension includes no analytics SDKs, trackers, or advertising libraries of any kind.</li>
+  </ul>
+
+  <h2>Permissions Used</h2>
+  <p>The Extension requests the following Chrome permissions, each used strictly for the purpose described:</p>
+  <ul>
+    <li><code>identity</code> — to sign in with your Microsoft work account via Chrome's OAuth flow.</li>
+    <li><code>storage</code> — to cache your session token, prompt data, and theme preference locally in your browser.</li>
+    <li><code>activeTab</code> — to detect, only when you click "Use," whether your current tab is a supported AI assistant site.</li>
+    <li><code>scripting</code> — to insert the selected prompt text into that page's input field.</li>
+    <li><strong>Host permissions</strong> for <code>login.microsoftonline.com</code>, <code>graph.microsoft.com</code>, <code>chatgpt.com</code>, <code>chat.openai.com</code>, <code>claude.ai</code>, <code>copilot.microsoft.com</code>, and <code>bing.com</code> — required to sign in, retrieve prompts from your organization's Microsoft 365 tenant, and insert prompt text into these specific AI assistant sites.</li>
+  </ul>
+
+  <h2>Where Data Is Stored and How It's Transmitted</h2>
+  <p>
+    All data the Extension handles is stored locally in your browser
+    (<code>chrome.storage.session</code> or <code>chrome.storage.local</code>) — Tishman
+    Speyer operates no backend server for this Extension, and no data is ever transmitted
+    to or stored on any infrastructure controlled by the developer. The only network
+    requests the Extension makes are direct, encrypted (HTTPS/TLS) calls from your browser
+    to Microsoft's own services: Microsoft Entra ID (for sign-in) and Microsoft Graph
+    (for reading your department and the SharePoint prompt library). These are the same
+    Microsoft 365 services your organization already relies on for identity and file
+    storage.
+  </p>
+
+  <h2>Third-Party Services</h2>
+  <p>
+    The Extension communicates only with Microsoft Entra ID and Microsoft Graph /
+    SharePoint Online, which are part of your organization's existing Microsoft 365
+    tenant and governed by your organization's existing agreements with Microsoft — not a
+    separate third party introduced by this Extension. The Extension integrates with no
+    other third-party service, and includes no analytics, crash-reporting, or advertising
+    providers of any kind.
+  </p>
+
+  <h2>Data Sharing</h2>
+  <p>
+    We do not sell, rent, trade, or otherwise share any data collected by the Extension
+    with any third party for advertising, marketing, or any other unrelated purpose.
+  </p>
+
+  <h2>Data Retention, Access, and Deletion</h2>
+  <p>
+    Session-based data (your sign-in token, cached department, and cached prompt list) is
+    automatically deleted when you close your browser or sign out of the Extension. The
+    only value that persists across sessions is your theme preference, which you can clear
+    at any time via <code>chrome://extensions</code> (remove the Extension, or clear its
+    storage) — this immediately deletes all locally stored data.
+  </p>
+  <p>
+    Because the Extension does not transmit or store any data on a server operated by the
+    developer, there is no remotely stored personal data for us to provide access to or
+    delete on your behalf. If you have any questions about what the Extension stores on
+    your device, or need help clearing it, contact us using the details below.
+  </p>
+
+  <h2>Children's Privacy</h2>
+  <p>
+    This Extension is an internal workplace tool intended solely for use by Tishman Speyer
+    employees and contractors. It is not directed at, and is not intended for use by,
+    children under the age of 18.
+  </p>
+
+  <h2>Changes to This Policy</h2>
+  <p>
+    If this policy changes, the updated version will be posted at this same URL with a
+    revised effective date.
+  </p>
+
+  <h2>Contact Us</h2>
+  <p>
+    If you have any questions about this privacy policy or how the Extension handles your
+    data, please contact:
+  </p>
+  <div class="box">
+    <p style="margin-bottom:4px;"><strong>Tishman Speyer</strong></p>
+    <p style="margin-bottom:0;">Email: <a href="mailto:grawal@contractors.tishmanspeyer.com">grawal@contractors.tishmanspeyer.com</a></p>
+  </div>
+
+  <footer>
+    Tishman Prompt Library — Privacy Policy &nbsp;•&nbsp; Effective Date: July 13, 2026
+  </footer>
+
+</body>
+</html>
