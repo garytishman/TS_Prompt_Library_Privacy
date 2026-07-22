@@ -90,8 +90,8 @@
   <p>
     Tishman Prompt Library is an internal browser extension built by
     Tishman Speyer for use by Tishman Speyer employees and contractors. It lets signed-in
-    users browse, copy, and insert prompts from the organization's internal SharePoint
-    prompt library into supported AI assistant websites. This policy explains exactly what
+    users browse, copy, and insert prompts from Tishman Speyer's internal SharePoint
+    prompt library into supported AI assistant websites. This policy explains what
     information the Extension accesses, how it is used, where it is stored, and who it is
     shared with.
   </p>
@@ -99,7 +99,7 @@
   <h2>Summary</h2>
   <div class="box">
     <p style="margin-bottom:0;">
-      The Extension does not operate any backend server and does not sell, rent, or share
+      The Extension does not sell, rent, or share
       any data with third parties for advertising or analytics purposes. All data the
       Extension touches either stays on your device or is exchanged directly, over HTTPS,
       with your organization's own Microsoft 365 tenant (Microsoft Entra ID / Microsoft
@@ -108,28 +108,34 @@
     </p>
   </div>
 
+    <h2>Data Sharing</h2>
+  <p>
+    <code>We do not sell, rent, trade, or otherwise share any data collected by the Extension
+    with any third party for advertising, marketing, or any other unrelated purpose./<code>
+  </p>
+
+  
   <h2>Information We Collect</h2>
 
   <h3>Authentication information</h3>
   <p>
     When you click "Sign in with Microsoft," the Extension obtains a short-lived OAuth
     access token from your organization's Microsoft Entra ID, using Chrome's built-in
-    <code>chrome.identity</code> sign-in flow. This token is used only to call Microsoft
+    <code>chrome.identity</code> sign-in flow. This token is used to call Microsoft
     Graph on your behalf (to read your department and the prompt library). It is stored
     solely in <code>chrome.storage.session</code>, which is automatically cleared when you
-    close your browser or sign out, and it is never transmitted anywhere other than
-    Microsoft's own sign-in and Graph API endpoints.
+    close your browser or sign out.
   </p>
 
   <h3>Personally identifiable information</h3>
   <p>
-    The Extension reads your Microsoft Entra ID <strong>department</strong> attribute
-    (via Microsoft Graph's <code>/me</code> endpoint) solely to determine which
-    department-specific prompt list to display alongside the shared "Common" list. This
-    value is cached only in <code>chrome.storage.session</code> for the duration of your
-    browser session and is never transmitted to any server other than Microsoft Graph.
     The Extension does not collect your name, email address, phone number, or any other
-    personal identifiers beyond this single attribute.
+    personal identifiers other than reading your Microsoft Entra ID <strong>department</strong> attribute
+    (via Microsoft Graph's <code>/me</code> endpoint) to determine which
+    department-specific prompt list to display alongside the shared "Common" list. This
+    value is cached in <code>chrome.storage.session</code> for the duration of your
+    browser session and is transmitted only to the Microsoft Graph server.
+   
   </p>
 
   <h3>Organizational content</h3>
@@ -144,17 +150,16 @@
 
   <h3>Local preferences</h3>
   <p>
-    The Extension stores one small preference — your light/dark theme choice — in
-    <code>chrome.storage.local</code> so it persists across browser restarts. This is a UI
-    setting only and is never transmitted anywhere.
+    The Extension stores one preference — your light/dark theme choice — in
+    <code>chrome.storage.local</code> which persists across browser restarts. This is a UI
+    setting only and is not transmitted or shared elsewhere. You can clear this preference at any time via chrome://extensions (remove the Extension, or clear its storage), which deletes all locally stored data.
   </p>
 
   <h3>Website interaction (AI assistant tabs)</h3>
   <p>
     When you click "Use" on a prompt, the Extension checks the hostname of your
-    currently active browser tab (only at that moment, via the <code>activeTab</code>
-    permission) to confirm you're on a supported AI assistant site
-    (ChatGPT, Claude, Microsoft Copilot, or Bing). If so, it inserts the selected prompt's
+    currently active browser tab to confirm you are on a supported AI assistant site
+    These include ChatGPT, Claude, Microsoft Copilot, or Bing. Once confirmed the Extension inserts the selected prompt's
     text into that page's input box on your behalf. This is a one-way action: the
     Extension <strong>writes</strong> prompt text into the page; it does not read, collect,
     or transmit any content, conversation, or data from those AI assistant sites.
@@ -163,14 +168,14 @@
   <h3>What we do not collect</h3>
   <ul>
     <li><span class="not-collected">Location data:</span> not collected.</li>
-    <li><span class="not-collected">Browsing history:</span> not collected, logged, or transmitted. The Extension only checks the active tab's hostname at the moment you click "Use," and never stores or reports it.</li>
+    <li><span class="not-collected">Browsing history:</span> not collected, logged, or transmitted. The Extension only checks the active tab's hostname at the moment you click "Use," and does not store or report it.</li>
     <li><span class="not-collected">Financial or payment information:</span> not collected.</li>
     <li><span class="not-collected">Health information:</span> not collected.</li>
     <li><span class="not-collected">Analytics, tracking, or advertising data:</span> not collected. The Extension includes no analytics SDKs, trackers, or advertising libraries of any kind.</li>
   </ul>
 
   <h2>Permissions Used</h2>
-  <p>The Extension requests the following Chrome permissions, each used strictly for the purpose described:</p>
+  <p>The Extension requests the following Chrome permissions, each used only for the purpose described:</p>
   <ul>
     <li><code>identity</code> — to sign in with your Microsoft work account via Chrome's OAuth flow.</li>
     <li><code>storage</code> — to cache your session token, prompt data, and theme preference locally in your browser.</li>
@@ -183,8 +188,8 @@
   <p>
     All data the Extension handles is stored locally in your browser
     (<code>chrome.storage.session</code> or <code>chrome.storage.local</code>) — Tishman
-    Speyer operates no backend server for this Extension, and no data is ever transmitted
-    to or stored on any infrastructure controlled by the developer. The only network
+    Speyer does not operate a backend server for this Extension. No data is transmitted
+    to or stored on infrastructure controlled by the developer. The only network
     requests the Extension makes are direct, encrypted (HTTPS/TLS) calls from your browser
     to Microsoft's own services: Microsoft Entra ID (for sign-in) and Microsoft Graph
     (for reading your department and the SharePoint prompt library). These are the same
@@ -196,29 +201,19 @@
   <p>
     The Extension communicates only with Microsoft Entra ID and Microsoft Graph /
     SharePoint Online, which are part of your organization's existing Microsoft 365
-    tenant and governed by your organization's existing agreements with Microsoft — not a
-    separate third party introduced by this Extension. The Extension integrates with no
+    tenant and governed by your organization's existing agreements with Microsoft. The Extension does not communicate with other third parties. The Extension integrates with no
     other third-party service, and includes no analytics, crash-reporting, or advertising
-    providers of any kind.
+    providers.
   </p>
 
-  <h2>Data Sharing</h2>
-  <p>
-    We do not sell, rent, trade, or otherwise share any data collected by the Extension
-    with any third party for advertising, marketing, or any other unrelated purpose.
-  </p>
 
   <h2>Data Retention, Access, and Deletion</h2>
   <p>
     Session-based data (your sign-in token, cached department, and cached prompt list) is
-    automatically deleted when you close your browser or sign out of the Extension. The
-    only value that persists across sessions is your theme preference, which you can clear
-    at any time via <code>chrome://extensions</code> (remove the Extension, or clear its
-    storage) — this immediately deletes all locally stored data.
+    automatically deleted when you close your browser or sign out of the Extension. 
   </p>
   <p>
-    Because the Extension does not transmit or store any data on a server operated by the
-    developer, there is no remotely stored personal data for us to provide access to or
+    There is no remotely stored personal data for us to provide access to or
     delete on your behalf. If you have any questions about what the Extension stores on
     your device, or need help clearing it, contact us using the details below.
   </p>
@@ -232,7 +227,7 @@
 
   <h2>Changes to This Policy</h2>
   <p>
-    If this policy changes, the updated version will be posted at this same URL with a
+    If this policy changes, the updated version will be posted on this same page with a
     revised effective date.
   </p>
 
@@ -247,7 +242,7 @@
   </div>
 
   <footer>
-    Tishman Prompt Library — Privacy Policy &nbsp;•&nbsp; Effective Date: July 13, 2026
+    Tishman Prompt Library — Privacy Policy &nbsp;•&nbsp;
   </footer>
 
 </body>
